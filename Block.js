@@ -21,6 +21,6 @@ module.exports = class Block {
             this.hash = this.calculateHash();
         }
 
-        console.log("A new Block has beenn mined: ",this.hash);
+        console.log("A new Block has been mined: ",this.hash);
     }
 }
