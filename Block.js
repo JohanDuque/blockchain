@@ -1,17 +1,17 @@
 const SHA256 = require("crypto-js/sha256");
 
 module.exports = class Block {
-    constructor(index, timestamp, transactionData, previousHash = '') {
+    constructor(index, timestamp, payLoad, previousHash = '') {
         this.index = index;
         this.previousHash = previousHash;
         this.timestamp = timestamp;
-        this.transactionData = transactionData;
+        this.payLoad = payLoad;
         this.hash = this.calculateHash();
         this.nonce = 0; //In cryptography, a nonce is an arbitrary number that can only be used once.
     }
 
     calculateHash() {
-        return SHA256(this.index + this.previousHash + this.timestamp + JSON.stringify(this.transactionData) + this.nonce).toString();
+        return SHA256(this.index + this.previousHash + this.timestamp + JSON.stringify(this.payLoad) + this.nonce).toString();
     }
 
     //Proof of work
